@@ -13,16 +13,10 @@ Welcome to the Wordle game, a text-based word-guessing game implemented in Java.
   - If a character is at the right position, '$' is displayed.
   - If a character is not present at all, 'X' is displayed.
 
-### Current Features
 
 The Wordle game has been recreated in Java, offering players the classic guessing experience with the following features:
+Users can save their details, including usernames, and accumulate points based on successful guesses.
 
-1. **User Details and Points:**
-   - Users can save their details, including usernames, and accumulate points based on successful guesses.
-
-2. **Leaderboard and Best Score (Work in Progress):**
-   - The current version is actively being developed to include a leaderboard feature.
-   - The best score achieved by each player will be displayed and updated as they continue to play.
 
 ### Future Scope
 
@@ -33,12 +27,9 @@ The Wordle game has been recreated in Java, offering players the classic guessin
 2. **Word Bank Expansion:**
    - Implement a system to extract words from a text file to expand the word bank.
    - This will diversify the game, offering players a broader range of words to guess.
-
-3. **Dynamic Word Retrieval:**
    - Replace the current array-based storage for secret words with dynamic retrieval from a text file.
-   - This will allow easy updates and additions to the pool of words without modifying the source code.
 
-4. **Completed Leaderboard and Best Score Display:**
+3. **Completed Leaderboard and Best Score Display:**
    - Once implemented, the leaderboard and best score display will provide users with a competitive and rewarding gaming experience.
 
 ## Getting Started
