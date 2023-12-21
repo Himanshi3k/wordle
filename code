@@ -1,0 +1,220 @@
+package project;
+import java.util.Scanner;
+import java.util.Random;
+
+
+class words{
+	String word;
+    Random r=new Random();
+	 //String word="FROGS";
+	
+	String arr[]=new String[] {"ROUND", "CLOWN", "TROVE", "ABOUT", "NOUNS","BROWN", "GREEN", "METRO", "GOING", "RAISE", "CROWS", "WHITE", "START", "CRANE","PLACE","SOUND","GREAT"};
+	//String arr2[]=new String[arr.length];
+	  //word=arr[g];
+		//}
+	void get() {
+		int num=r.nextInt(arr.length);
+		word=arr[num];
+		
+		//arr2[num]=word;
+		
+	}
+	}
+class player extends words{
+	
+	Scanner s=new Scanner(System.in);
+	String name;
+	int rounds=6;
+	int won;
+	int wins=0;
+	int points;
+	int totwins=0;
+	int losses=0;
+	static String choice;
+	String code="XXXXX";
+	void read() {
+		System.out.println("Enter your name:");
+		name=s.next();
+		
+	}
+	void play() {
+		code="XXXXX";
+		get();
+		System.out.println("Enter a five letter word in CAPITALS");
+		wins=0;
+		rounds=6;
+		
+		
+		
+		while(rounds>0 && wins==0) {
+			code="XXXXX";
+			String userword=s.next();
+			System.out.println(userword);
+			if(userword.equals(word)) {
+				totwins++;
+				rounds--;
+				wins=wins+1;
+				
+				
+				System.out.println("you guessed correctly in your "+(6-rounds)+" guess");
+				won=6-rounds;
+				if(won==1) {
+					points=points+100;
+					
+				}
+				else if(won>1 && won<=3) {
+					points=points+50;
+					
+				}
+				else if(won==0) {
+					points=0;
+					
+				}
+				else {
+					points=points+10;
+				}
+
+				System.out.println("Do you wish to play another round?(Y/N)");
+				choice=s.next();
+				
+				
+				
+			}
+			else if(userword.length()>5 || userword.length()<5) {
+				System.out.println("The word must have 5 letters");
+				System.out.println("Enter again");
+				//userword=s.next();
+				
+				
+			}
+			
+			else {
+				
+				for(int j=0;j<5;j++) {
+					for(int m=0;m<5;m++) {
+						if(word.charAt(j)==userword.charAt(m) && j==m) {
+							code=code.substring(0,m)+'$'+code.substring(m+1,5);
+							}
+						else if(word.charAt(j)==userword.charAt(m) && j!=m) {
+							
+                            code=code.substring(0,m)+'*'+code.substring(m+1,5);
+                            }
+						
+						
+						}
+					
+					}
+				rounds--;
+				
+				System.out.println(code);
+				System.out.println(rounds+" guesses left");
+				}
+            if(rounds==0) {
+				
+				losses++;
+				System.out.println("OOPS! YOU ARE OUT OF GUESSES");
+				System.out.println("The word was-"+word);
+				System.out.println("Do you wish to play another round?(Y/N)");
+				choice=s.next();}
+			
+			
+			}
+		}
+	void points() {
+		
+			System.out.println("your points are "+points);
+		
+	}
+	void numwins() {
+		System.out.println("wins-"+totwins);
+	}
+	void numloss() {
+		System.out.println("losses-"+losses);
+	}
+	void det() {
+		System.out.println("name of player:"+name);
+		numwins();
+		points();
+		numloss();
+	}
+	}
+		
+		
+		
+		
+		
+		
+	
+public class wordle {
+	public static void main(String[] args) {
+		Scanner s=new Scanner(System.in);
+		System.out.println("WELCOME TO WORDLE!");
+		System.out.println("RULES-");
+		System.out.println("1.You will get 6 attempts to guess a five letter word");
+		System.out.println("2.If any character in the word you guessed is present");
+		System.out.println( "in the secret word but not at that particular position,");
+		System.out.println("* will be displayed there");
+		System.out.println("3.If it is at the right position,$ will be displayed and if it is not present at all,X will be displayed");
+		System.out.println("4.The earlier you guess the word,the more points you'll get");
+		System.out.println("Let's start");
+		player p=new player();
+		
+		
+		p.read();
+		p.play();
+		boolean b=true;
+		
+		
+		//System.out.println("Do you wish to play another round?(Y/N)");
+		
+		
+		
+		while(b==true) {
+			
+			
+			if((player.choice).equals("y") || (player.choice).equals("Y")) {
+				p.play();
+				//b=false;
+				
+			}
+			else if((player.choice).equals("n") || (player.choice).equals("N")) {
+				b=false;
+				System.out.println("THANKYOU FOR PLAYING WORDLE");
+				
+			}
+			else {
+				System.out.println("Invalid choice entered, enter again");
+				player.choice=s.next();
+				
+			}
+			
+		}
+		boolean t=true;
+		System.out.println("Do you wish to know your details?(Y/N)");
+		while(t==true) {
+			String h=s.next();
+			if(h.equals("y") || h.equals("Y")) {
+				p.det();
+				t=false;
+				
+			}
+			else if(h.equals("n") || h.equals("N")) {
+				t=false;
+				System.out.println("THANKYOU FOR PLAYING WORDLE");
+				
+			}
+			else {
+				System.out.println("Invalid choice entered, enter again");
+				
+			}
+			
+		}
+		
+		
+		
+		
+		
+		
+	}
+
+}
